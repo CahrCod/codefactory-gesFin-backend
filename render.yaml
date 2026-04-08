@@ -1,0 +1,31 @@
+databases:
+  - name: gestion-financiera-db
+    plan: free
+    databaseName: prueba_reservas_db
+    user: prueba_user
+
+services:
+  - type: web
+    name: gestion-financiera-backend
+    runtime: docker
+    repo: https://github.com/Ju2412an/codefactory-gestionfinancera-b.git
+    branch: main
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: gestion-financiera-db
+          property: connectionURI
+          # Render provides postgres:// format, Spring needs jdbc:postgresql://
+          # Set manually as: jdbc:postgresql://host:port/dbname
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: gestion-financiera-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: gestion-financiera-db
+          property: password
+      - key: PORT
+        value: 8080

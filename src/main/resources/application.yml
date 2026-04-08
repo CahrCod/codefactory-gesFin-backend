@@ -2,9 +2,9 @@ spring:
   application:
     name: prueba-reservas
   datasource:
-    url: jdbc:postgresql://postgres:5432/prueba_reservas_db
-    username: prueba_user
-    password: prueba_password
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/prueba_reservas_db}
+    username: ${SPRING_DATASOURCE_USERNAME:prueba_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:prueba_password}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -20,7 +20,7 @@ spring:
       write-dates-as-timestamps: false
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /
   compression:
