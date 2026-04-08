@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: prueba-reservas
+  datasource:
+    url: jdbc:postgresql://postgres:5432/prueba_reservas_db
+    username: prueba_user
+    password: prueba_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    min-response-size: 1024
+
+logging:
+  level:
+    root: INFO
+    com.pruebareservas: DEBUG
