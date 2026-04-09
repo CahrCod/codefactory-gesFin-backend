@@ -54,7 +54,7 @@ public class UsuarioController {
 
             ApiResponseDTO<UsuarioDTO> response = ApiResponseDTO.<UsuarioDTO>builder()
                     .statusCode(200)
-                    .message("Autenticación exitosa")
+                    .message("Autenticación es exitosa")
                     .data(usuario)
                     .success(true)
                     .build();
